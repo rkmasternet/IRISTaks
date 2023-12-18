@@ -1,0 +1,66 @@
+﻿@model IRISTaks.Models.Response
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <div class="form-text">
+            <h3 id="title">Excel Sheet Column Letter to Column Number And Viseversa</h3>
+        </div>
+        <form method="post" action="/Home/ExtractExcelHeader">
+            <table class="table table-responsive table-striped table-borderless col-md-6">
+                <tr>
+                    <td>Action</td>
+                    <td class="text-lg-start">
+                        <table class="table table-borderless table-responsive">
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="ratio" value="LTC" checked="checked" style="width:20px; margin-right:10px" name="action" type="radio" />
+                                        <label>
+                                            Letter to Column Number
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+
+                                        <input class="ratio" value="CTL" style="width:20px; margin-right:10px" name="action" type="radio" />
+                                        <label>
+                                            Column Number to Letter
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr><td>Request</td><td><input name="Request" class="form-control" type="text" /></td></tr>
+                <tr><td></td><td><button type="submit" class="btn btn-primary btn-md">Submit</button></td></tr>
+                <tr>
+                    <td>
+                        <div class="form-text">
+                            <h3>Result</h3>
+                            @if (!string.IsNullOrEmpty(Model?.Error))
+                            {
+                                <div class="alert-danger">
+                                    <h4>@Model.Error</h4>
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="div_result" class="text-md-start">
+                                    <h4>@Model.Result </h4>
+                                </div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</main>
